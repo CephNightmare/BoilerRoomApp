@@ -1,0 +1,29 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>Login page</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+    <p *ngIf="submitAttempt" style="color: #ea6153;">Please fill out all details accurately.</p>
+
+    <ion-list no-lines inset>
+
+        <form [formGroup]="loginForm">
+
+            <ion-item>
+                <ion-input formControlName="username" placeholder="gebruikersnaam" type="text"
+                           [class.invalid]="!loginForm.controls.username.valid && (loginForm.controls.username.dirty|| submitAttempt)"></ion-input>
+            </ion-item>
+
+           <ion-item>
+                <ion-input formControlName="password" placeholder="wachtwoord" type="password"></ion-input>
+            </ion-item>
+
+            <button ion-button full color="primary" (click)="attemptSave()">Login!</button>
+        </form>
+
+    </ion-list>
+
+</ion-content>

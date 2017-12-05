@@ -2,5 +2,15 @@
   "name": "myApp",
   "app_id": "",
   "type": "ionic-angular",
-  "integrations": {}
+  "integrations": {},
+  "proxies": [
+    {
+      "path": "/insertUser",
+      "proxyUrl": "http://boilerroomdata.gvandrunen.biz:8080/insert-user.php"
+    },
+    {
+      "path": "/authenticateUser",
+      "proxyUrl": "http://boilerroomdata.gvandrunen.biz:8080/authenticate-user.php"
+    }
+  ]
 }

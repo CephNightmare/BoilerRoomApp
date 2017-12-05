@@ -1,0 +1,31 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>RegisterPage</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <p *ngIf="submitAttempt" style="color: #ea6153;">Please fill out all details accurately.</p>
+
+    <ion-list no-lines inset>
+
+        <form [formGroup]="registerForm">
+
+            <ion-item>
+                <ion-input formControlName="username" placeholder="gebruikersnaam" type="text"
+                           [class.invalid]="!registerForm.controls.username.valid && (registerForm.controls.username.dirty|| submitAttempt)"></ion-input>
+            </ion-item>
+
+            <ion-item>
+                <ion-input formControlName="email" placeholder="emailadres" type="email"></ion-input>
+            </ion-item>
+
+            <ion-item>
+                <ion-input formControlName="password" placeholder="wachtwoord" type="password"></ion-input>
+            </ion-item>
+
+            <button ion-button full color="primary" (click)="attemptSave()">Create Account!</button>
+        </form>
+
+    </ion-list>
+</ion-content>

@@ -1,0 +1,22 @@
+page-login {
+  .content {
+    background-color: #eeeeee;
+  }
+
+  .invalid {
+    .text-input {
+      border: 1px solid red;
+    }
+  }
+
+  .text-input {
+    border-radius: 5px;
+    background-color: white;
+    padding: 16px;
+  }
+
+  .item-block {
+    background-color: transparent;
+  }
+
+}

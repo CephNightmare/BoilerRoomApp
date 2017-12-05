@@ -47,14 +47,16 @@ $colors: (
 // iOS only Sass variables can go here
 
 
-
+$text-input-ios-margin-bottom: 16px;
+$text-input-ios-background-color: white;
 
 // App Material Design Variables
 // --------------------------------------------------
 // Material Design only Sass variables can go here
 
-
-
+$text-input-md-margin-bottom: 16px;
+$text-input-md-background-color: white;
+$text-input-md-show-focus-highlight: false;
 
 // App Windows Variables
 // --------------------------------------------------
