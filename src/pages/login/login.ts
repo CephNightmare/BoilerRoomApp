@@ -3,6 +3,7 @@ import {NavController} from 'ionic-angular';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Http, Headers, RequestOptions} from '@angular/http';
 import {UsernameValidator} from  '../../validators/username';
+import {HomePage} from "../home/home";
 
 @Component({
     selector: 'page-login',
@@ -43,14 +44,27 @@ export class LoginPage {
                 .subscribe(data => {
                     this.data.response = data["_body"];
 
-                    if(this.data.response == '1') {
-                        console.log("LOGIN HERE");
-                    }
+                    let response = JSON.parse(this.data.response);
 
+                    if (response[0] == this.loginForm.value.username) {
+                        localStorage.setItem('authenticationToken', this.data.response);
+                        this.navCtrl.push(HomePage);
+                    }
                 }, error => {
                     console.log("Oooops!");
                 });
         }
     }
 
+    ionViewWillEnter() {
+        this.checkToken();
+    }
+
+    checkToken() {
+        var token = localStorage.getItem('authenticationToken');
+        if (token != null) {
+            // now you are logged in
+            console.log(localStorage.getItem('authenticationToken'));
+        }
+    }
 }

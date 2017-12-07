@@ -5,6 +5,8 @@ import {Http, Headers, RequestOptions} from '@angular/http';
 import {EmailValidator} from  '../../validators/email';
 import {UsernameValidator} from  '../../validators/username';
 
+import {LoginPage} from '../login/login';
+
 import 'rxjs/add/operator/map';
 
 @Component({
@@ -13,12 +15,12 @@ import 'rxjs/add/operator/map';
 })
 export class RegisterPage {
     data: any = {};
+    error: boolean = false;
 
     @ViewChild('signupSlider') signupSlider: any;
 
     registerForm: FormGroup;
 
-    submitAttempt: boolean = false;
 
     constructor(public navCtrl: NavController, private http: Http, public formBuilder: FormBuilder) {
         this.registerForm = formBuilder.group({
@@ -33,7 +35,7 @@ export class RegisterPage {
     }
 
     attemptSave() {
-        this.submitAttempt = true;
+        this.error = true;
 
         if (this.registerForm.valid) {
 
@@ -54,7 +56,10 @@ export class RegisterPage {
             this.http.post('/insertUser', body, options)
                 .subscribe(data => {
                     this.data.response = data["_body"];
-                    console.log(this.data.response);
+
+                    localStorage.setItem('RegisteredToken', '1');
+                    this.navCtrl.push(LoginPage);
+
                 }, error => {
                     console.log("Oooops!");
                 });
